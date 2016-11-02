@@ -8,7 +8,7 @@ use Blog\ZendCategory;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use Zend\Db\Sql\Sql;
-
+use Zend\Db\TableGateway\TableGateway;
 
 class BlogController extends AbstractActionController
 {
@@ -23,12 +23,14 @@ class BlogController extends AbstractActionController
 		//$categories = $this->getServiceLocator()->get(Categories::class);
 
 		$adapter = $this->getServiceLocator()->get('Zend\Db\Adapter\Adapter');
-		
+/*		
 		$sql 	= new Sql($adapter);
 		$select = $sql->select()->from('categories');
 		$stmt 	= $sql->prepareStatementForSqlObject($select);
-		$categories = $stmt->execute();
+		$categories = $stmt->execute();*/
 
+		$categoriesTable = new TableGateway('categories',$adapter);
+		$categories = $categoriesTable->select();
 		//$categories = new CategoriesFactory();
 
 
