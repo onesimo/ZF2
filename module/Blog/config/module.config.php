@@ -29,4 +29,14 @@ return [
             __DIR__ . '/../view',
         ],
     ],
+    'service_manager' => [
+    	'services' => [
+    		'categories' => [
+    			'PHP', 
+    			'Zend Framework',
+    			'Symphony',
+    			'Laravel'
+    		],
+    	],
+    ],
 ];

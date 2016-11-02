@@ -15,7 +15,8 @@ class BlogController extends AbstractActionController
 			'My post'
 		];
 
-		return new ViewModel(['posts'=>$posts]);
+		$categories = $this->getServiceLocator()->get('categories');
+		return new ViewModel(['posts'=>$posts,'categories' => $categories]);
 	}
 
 }
