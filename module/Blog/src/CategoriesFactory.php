@@ -7,6 +7,7 @@ use Blog\PHPCategory;
 use Blog\ZendCategory;
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
+use Zend\Db\TableGateway\TableGateway;
 
 class CategoriesFactory implements FactoryInterface
 {
@@ -14,10 +15,9 @@ class CategoriesFactory implements FactoryInterface
 	public function createService(ServiceLocatorInterface $serviceLocator)
 	{
 		
-		$categories = new Categories();
-		$categories->addCategory(new PHPCategory());
-		$categories->addCategory(new ZendCategory());
+		$adapter = $serviceLocator->get('Zend\Db\Adapter\Adapter');
+		$categoriesTable = new TableGateway('categories',$adapter);
 
-		return $categories;
+		return $categoriesTable;
 	}
 }

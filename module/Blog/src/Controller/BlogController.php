@@ -20,21 +20,9 @@ class BlogController extends AbstractActionController
 			'My post'
 		];
 
-		//$categories = $this->getServiceLocator()->get(Categories::class);
-
-		$adapter = $this->getServiceLocator()->get('Zend\Db\Adapter\Adapter');
-/*		
-		$sql 	= new Sql($adapter);
-		$select = $sql->select()->from('categories');
-		$stmt 	= $sql->prepareStatementForSqlObject($select);
-		$categories = $stmt->execute();*/
-
-		$categoriesTable = new TableGateway('categories',$adapter);
-		$categories = $categoriesTable->select();
-		//$categories = new CategoriesFactory();
-
-
-
+		$c = $this->getServiceLocator()->get(Categories::class);
+		$categories = $c->select();
+ 
 		return new ViewModel(['posts'=>$posts,'categories' => $categories]);
 	}
 
