@@ -2,6 +2,7 @@
 
 namespace Blog\Controller;
 
+use Blog\Categories;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
@@ -15,7 +16,8 @@ class BlogController extends AbstractActionController
 			'My post'
 		];
 
-		$categories = $this->getServiceLocator()->get('categories');
+		$categories = $this->getServiceLocator()->get(Categories::class);
+
 		return new ViewModel(['posts'=>$posts,'categories' => $categories]);
 	}
 

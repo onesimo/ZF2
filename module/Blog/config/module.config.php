@@ -2,6 +2,7 @@
 
 namespace Blog;
 
+use Blog\Categories;
 use Blog\Controller\BlogController;
 
 return [
@@ -38,5 +39,8 @@ return [
     			'Laravel'
     		],
     	],
+    	'invokables' => [
+    		Categories::class => Categories::class
+    	]
     ],
 ];
