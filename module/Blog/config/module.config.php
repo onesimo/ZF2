@@ -3,6 +3,7 @@
 namespace Blog;
 
 use Blog\Categories;
+use Blog\CategoriesFactory;
 use Blog\Controller\BlogController;
 
 return [
@@ -40,7 +41,10 @@ return [
     		],
     	],
     	'invokables' => [
-    		Categories::class => Categories::class
-    	]
+    		#Categories::class => Categories::class
+    	],
+    	'factories' => [
+    		Categories::class => CategoriesFactory::class
+    	],
     ],
 ];
